@@ -43,7 +43,7 @@ Before running this application, ensure that you have the following installed:
 To log in to the application, use the following credentials:
 - **`username`**= mor_2314
 - **`password`**= 83r5^_
-The login request can be made using the following POST method with FakeStoreAPI:
+- The login request can be made using the following POST method with FakeStoreAPI:
 ```bash
 fetch('https://fakestoreapi.com/auth/login', {
     method: 'POST',
