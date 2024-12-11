@@ -39,18 +39,19 @@ Before running this application, ensure that you have the following installed:
 
    Ensure you have a connected device or an emulator running.
 
-## To Login
-i'm using fakestoreapi, so that below are the default data post methods to login  
+## Login Instructions
+To log in to the application, use the following credentials:
 - **`username`**= mor_2314
 - **`password`**= 83r5^_
+The login request can be made using the following POST method with FakeStoreAPI:
 ```bash
-fetch('https://fakestoreapi.com/auth/login',{
-            method:'POST',
-            body:JSON.stringify({
-                username: "mor_2314",
-                password: "83r5^_"
-            })
-        })
+fetch('https://fakestoreapi.com/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({
+        username: "mor_2314",
+        password: "83r5^_"
+    })
+})
 ```            
 
 ## Project Structure
