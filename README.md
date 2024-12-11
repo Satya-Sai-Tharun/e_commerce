@@ -1,4 +1,4 @@
-# E-Commerce Flutter Application
+# E_Commerce Flutter Application
 
 This Flutter project is an e-commerce application that provides features like user login, product search, product details, and cart management. The application fetches user and product data from APIs to simulate a dynamic shopping experience.
 
