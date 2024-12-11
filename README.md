@@ -40,7 +40,7 @@ Before running this application, ensure that you have the following installed:
    Ensure you have a connected device or an emulator running.
 
 ## To Login
-- i'm using fakestoreapi 
+i'm using fakestoreapi, so that below are the default data post methods to login  
 - **`username`**= mor_2314
 - **`password`**= 83r5^_
 ```bash
