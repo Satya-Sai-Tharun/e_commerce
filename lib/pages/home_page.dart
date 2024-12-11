@@ -43,13 +43,13 @@ class _HomePageState extends State<HomePage> {
     });
 
     final response = await http.get(
-      Uri.parse('https://fakestoreapi.com/products?limit=${_page * 10}'),
+      Uri.parse('https://fakestoreapi.com/products?limit=10&page=$_page'),
     );
 
     if (response.statusCode == 200) {
       final List newProducts = json.decode(response.body);
       setState(() {
-        _products = newProducts;
+        _products.addAll(newProducts);
         _page++;
       });
     }
@@ -61,13 +61,10 @@ class _HomePageState extends State<HomePage> {
 
   void _addToCart(Map product) {
     setState(() {
-      // Check if the product already exists in the cart
       int index = _cart.indexWhere((item) => item['id'] == product['id']);
       if (index == -1) {
-        // If product is not in the cart, add it with quantity 1
         _cart.add({...product, 'quantity': 1});
       } else {
-        // If product is already in the cart, increment the quantity
         _cart[index]['quantity']++;
       }
     });
@@ -126,7 +123,7 @@ class _HomePageState extends State<HomePage> {
           fontWeight: FontWeight.bold,
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Change the color of back button and other icons
+          color: Colors.white,
         ),
         actions: [
           IconButton(
@@ -137,8 +134,8 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(
                   builder: (context) => SearchPage(
                     products: _products,
-                    addToCart: _addToCart, // Pass the _addToCart function
-                    cart: _cart, // Pass the cart list
+                    addToCart: _addToCart,
+                    cart: _cart,
                   ),
                 ),
               );
@@ -232,8 +229,11 @@ class _HomePageState extends State<HomePage> {
                   return true;
                 },
                 child: ListView.builder(
-                  itemCount: _products.length,
+                  itemCount: _products.length + (_isLoading ? 1 : 0),
                   itemBuilder: (context, index) {
+                    if (index == _products.length) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
                     final product = _products[index];
                     return ListTile(
                       leading: Image.network(product['image'], width: 50, height: 50),
@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('\$${product['price']}'),
-                          _buildRating(product['rating']['rate'].toDouble()), // Rating displayed here
+                          _buildRating(product['rating']['rate'].toDouble()),
                           Text(
                             '(${product['rating']['count']} reviews)',
                             style: const TextStyle(color: Colors.grey, fontSize: 12),

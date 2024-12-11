@@ -101,7 +101,7 @@ class _CartPageState extends State<CartPage> {
               onPressed: () {
                 if (widget.cart.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Cart is empty')),
+                    const SnackBar(content: Text('Cart is empty add items to checkout', style: TextStyle(color: Colors.red))),
                   );
                 } else {
                   Navigator.push(
