@@ -39,6 +39,20 @@ Before running this application, ensure that you have the following installed:
 
    Ensure you have a connected device or an emulator running.
 
+## To Login
+- i'm using fakestoreapi 
+- **`username`**= mor_2314
+- **`password`**= 83r5^_
+```bash
+fetch('https://fakestoreapi.com/auth/login',{
+            method:'POST',
+            body:JSON.stringify({
+                username: "mor_2314",
+                password: "83r5^_"
+            })
+        })
+```            
+
 ## Project Structure
 
 - **`main.dart`**: Entry point of the application.
