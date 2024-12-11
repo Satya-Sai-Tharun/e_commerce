@@ -83,8 +83,5 @@ This application uses the following packages:
 - **`flutter/material.dart`**: For building the user interface.
 
 ## Future Enhancements
-
-- Integrate user authentication.
-- Improve cart functionality to handle checkout.
 - Add payment gateway integration.
 - Optimize for multi-platform deployment.
